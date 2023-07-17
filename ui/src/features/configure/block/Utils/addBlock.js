@@ -74,7 +74,7 @@ export default function AddBlock(props) {
   function validateName(name) {
     const regex = new RegExp(
       //eslint-disable-next-line
-      "^([a-zA-Z0-9/\._-]){1,32}$"
+      "^([a-zA-Z0-9/\._-]){1,64}$"
     );
 
     const nameValid = name ? !regex.test(name) : false;
@@ -113,7 +113,7 @@ export default function AddBlock(props) {
               title={
                 <>
                   - Block name must be unique
-                  <br />- Max of 32 characters
+                  <br />- Max of 64 characters
                   <br />- Can contain alphnumerics
                   <br />- Can underscore, hypen, lash, and period
                 </>

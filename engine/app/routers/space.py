@@ -129,8 +129,8 @@ async def scrub_block_patch(patch, space, block_name):
         {
             "op": "replace",
             "path": "/name",
-            "valid": "^([a-zA-Z0-9/\._-]){1,32}$",
-            "error": "Block name can be a maximum of 32 characters and may contain alphanumerics, underscores, hypens, slashes, and periods."
+            "valid": "^([a-zA-Z0-9/\._-]){1,64}$",
+            "error": "Block name can be a maximum of 64 characters and may contain alphanumerics, underscores, hypens, slashes, and periods."
         },
         {
             "op": "replace",
@@ -604,8 +604,8 @@ async def create_block(
     except:
         raise HTTPException(status_code=400, detail="Invalid space name.")
 
-    if not re.match("^([a-zA-Z0-9/\._-]){1,32}$", block.name, re.IGNORECASE):
-        raise HTTPException(status_code=400, detail="Block name can be a maximum of 32 characters and may contain alphanumerics, underscores, hypens, slashes, and periods.")
+    if not re.match("^([a-zA-Z0-9/\._-]){1,64}$", block.name, re.IGNORECASE):
+        raise HTTPException(status_code=400, detail="Block name can be a maximum of 64 characters and may contain alphanumerics, underscores, hypens, slashes, and periods.")
 
     try:
         block_network = IPNetwork(str(block.cidr))
